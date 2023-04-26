@@ -1,5 +1,5 @@
 # Excalidraw without firebase
-This is a fork from the [excalidraw project]https://github.com/b310-digital/excalidraw) that is a fork from the [excalidraw project](https://github.com/excalidraw/excalidraw) with changes inspired and partly taken from [Kilian Decaderincourt](https://gitlab.com/kiliandeca/excalidraw-fork) to enable support for rooms without using firebase.<br />
+This is a fork from the [excalidraw b310-digital_fork](https://github.com/b310-digital/excalidraw) that is a fork from the [excalidraw project](https://github.com/excalidraw/excalidraw) with changes inspired and partly taken from [Kilian Decaderincourt](https://gitlab.com/kiliandeca/excalidraw-fork) to enable support for rooms without using firebase.<br />
 
 This fork is updated to 0.15.0 version of excalidraw
 ## Setup with docker
