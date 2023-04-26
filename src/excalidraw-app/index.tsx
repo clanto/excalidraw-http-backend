@@ -80,6 +80,7 @@ import { parseLibraryTokensFromUrl, useHandleLibrary } from "../data/library";
 import { AppMainMenu } from "./components/AppMainMenu";
 import { AppWelcomeScreen } from "./components/AppWelcomeScreen";
 import { AppFooter } from "./components/AppFooter";
+import { getStorageBackend } from "./data/config";
 import { atom, Provider, useAtom, useAtomValue } from "jotai";
 import { useAtomWithInitialValue } from "../jotai";
 import { appJotaiStore } from "./app-jotai";
@@ -308,11 +309,15 @@ const ExcalidrawWrapper = () => {
           }, [] as FileId[]) || [];
 
         if (data.isExternalScene) {
-          loadFilesFromFirebase(
-            `${FIREBASE_STORAGE_PREFIXES.shareLinkFiles}/${data.id}`,
-            data.key,
-            fileIds,
-          ).then(({ loadedFiles, erroredFiles }) => {
+          getStorageBackend()
+          .then((storageBackend) => {
+            return storageBackend.loadFilesFromStorageBackend(
+              `${FIREBASE_STORAGE_PREFIXES.shareLinkFiles}/${data.id}`,
+              data.key,
+              fileIds,
+            );
+          })
+          .then(({ loadedFiles, erroredFiles }) => {
             excalidrawAPI.addFiles(loadedFiles);
             updateStaleImageStatuses({
               excalidrawAPI,
